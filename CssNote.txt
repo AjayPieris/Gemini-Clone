@@ -1,0 +1,18 @@
+1. .main .greet span {
+    background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+background: linear-gradient(...) → creates the gradient colors.
+
+-webkit-background-clip: text → shows the gradient only inside the text.
+
+-webkit-text-fill-color: transparent → makes the text itself transparent so the gradient is visible.
+
+2.  grid-template-columns: repeat(auto-fill, minimax(180px, 1fr));
+
+auto-fill → automatically adds as many columns as fit.
+minmax(180px, 1fr) → each column is at least 180px wide and can grow to fill space.
+
+3. 

@@ -131,3 +131,85 @@
     text-align: center;
     font-weight: 300;
 }
+
+/* --- RESULT CONTAINER --- */
+.result {
+  padding: 40px 20px 120px;
+  max-width: 900px;
+  margin: auto;
+  height: calc(100vh - 180px); /* fills space above input bar */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-sizing: border-box;
+}
+
+.result::-webkit-scrollbar {
+  width: 6px;
+}
+.result::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* --- RESULT TITLE (USER PROMPT) --- */
+.result-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #f0f4f9;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.result-title img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.result-title p {
+  font-weight: 500;
+  font-size: 17px;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- AI RESPONSE --- */
+.resultdata {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.resultdata img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.resultdata p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- LOADING STATE --- */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  margin-top: 50px;
+}
+

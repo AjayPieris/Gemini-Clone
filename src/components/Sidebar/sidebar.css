@@ -29,7 +29,21 @@
 .sidebar .recent {
   display: flex;
   flex-direction: column;
+  animation: fadeIn 1.5s ease forwards;
 }
+
+/* Define keyframes for fadeIn */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px); /* optional smooth slide-in */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .sidebar .recent-title {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -58,4 +72,10 @@
   gap: 10px;
   padding-right: 10px;
   cursor: pointer;
+}
+
+@media (max-width:600px) {
+  .sidebar{
+    display: none;
+  }
 }

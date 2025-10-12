@@ -1,10 +1,10 @@
 import { GoogleGenAI } from "@google/genai";
 
-async function main(prompt: string) {
-  const ai = new GoogleGenAI({
-    apiKey: "AIzaSyCcRPsjVfl1oiw-SpfUivztTvxZdZMKGgk",
-  });
+const ai = new GoogleGenAI({
+  apiKey: "AIzaSyCcRPsjVfl1oiw-SpfUivztTvxZdZMKGgk", // your key
+});
 
+async function main(prompt) {
   const model = "gemini-2.5-flash-lite";
   const contents = [
     {
@@ -18,14 +18,15 @@ async function main(prompt: string) {
     contents,
   });
 
+  // Collect streamed text
+  let result = "";
   for await (const chunk of response) {
     if (chunk.text) {
-      console.log(chunk.text);
+      result += chunk.text;
     }
   }
-}
 
-// Call the function with a prompt
-main("").catch(console.error);
+  return result; // ✅ return the full response text
+}
 
 export default main;

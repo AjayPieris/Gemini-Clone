@@ -20,6 +20,7 @@ function Main() {
         <p>Gemini</p>
         <img src={assets.user_icon} alt="" />
       </div>
+
       <div className="main-container">
         {!showResult ? (
           <>
@@ -27,8 +28,9 @@ function Main() {
               <p>
                 <span>Hello, Dev.</span>
               </p>
-              <p> How can I help you today?</p>
+              <p>How can I help you today?</p>
             </div>
+
             <div className="cards">
               <div className="card">
                 <p>Discover scenic routes for your next road trip adventure</p>
@@ -39,9 +41,7 @@ function Main() {
                 <img src={assets.bulb_icon} alt="Bulb" />
               </div>
               <div className="card">
-                <p>
-                  Get suggestions for interesting conversations along the way
-                </p>
+                <p>Get suggestions for interesting conversations along the way</p>
                 <img src={assets.message_icon} alt="Message" />
               </div>
               <div className="card">
@@ -56,10 +56,11 @@ function Main() {
               <img src={assets.user_icon} alt="" />
               <p>{recentPrompt}</p>
             </div>
+
             <div className="resultdata">
               <img src={assets.gemini_icon} alt="" />
               {loading ? (
-                <p className="loading">Thinking</p>
+                <p>Loading...</p>
               ) : (
                 <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
               )}
@@ -74,11 +75,12 @@ function Main() {
               value={input}
               type="text"
               placeholder="Enter a prompt here"
+              onKeyDown={(e) => e.key === "Enter" && onSent()}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              <img onClick={onSent} src={assets.send_icon} alt="" />
             </div>
           </div>
           <p className="bottom-info">

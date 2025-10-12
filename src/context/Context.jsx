@@ -13,15 +13,18 @@ const ContextProvider = (props) => {
 
   const onSent = async () => {
     if (!input.trim()) return; // prevent empty prompt
+
     setResultData("");
     setLoading(true);
     setShowResult(true);
-    setRecentPrompt(input)
+    setRecentPrompt(input);
+
     try {
       const response = await main(input);
-      setResultData(response);
+      setResultData(response); // ✅ update the UI
     } catch (error) {
       console.error("Error from Gemini:", error);
+      setResultData("⚠️ Something went wrong. Please try again.");
     }
 
     setLoading(false);
@@ -38,7 +41,7 @@ const ContextProvider = (props) => {
     loading,
     resultData,
     input,
-    setInput
+    setInput,
   };
 
   return (

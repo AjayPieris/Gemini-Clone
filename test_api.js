@@ -1,6 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = "AIzaSyCcRPsjVfl1oiw-SpfUivztTvxZdZMKGgk";
+const apiKey = process.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+  console.error(
+    "Error: VITE_GEMINI_API_KEY is not set. Run with: node --env-file=.env test_api.js"
+  );
+  process.exit(1);
+}
+
 const ai = new GoogleGenAI({ apiKey });
 
 async function main() {
@@ -8,11 +16,7 @@ async function main() {
   const contents = [
     {
       role: "user",
-      parts: [
-        {
-          text: "Please provide a clear, structured, and point-by-point response to the following query. Use bullet points and bold text for emphasis where appropriate:\n\nExplain quantum computing",
-        },
-      ],
+      parts: [{ text: "Hi, how are you?" }],
     },
   ];
 

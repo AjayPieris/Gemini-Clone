@@ -1,32 +1,41 @@
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
-  apiKey: "AIzaSyCcRPsjVfl1oiw-SpfUivztTvxZdZMKGgk", // your key
+  apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 });
 
 async function main(prompt) {
-  const model = "gemini-2.5-flash-lite";
+  const model = "gemini-2.0-flash";
   const contents = [
     {
       role: "user",
-      parts: [{ text: prompt }],
+      parts: [
+        {
+          text: `Please provide a clear, structured, and point-by-point response to the following query. Use bullet points and bold text for emphasis where appropriate:\n\n${prompt}`,
+        },
+      ],
     },
   ];
 
-  const response = await ai.models.generateContentStream({
-    model,
-    contents,
-  });
+  try {
+    const response = await ai.models.generateContentStream({
+      model,
+      contents,
+    });
 
-  // Collect streamed text
-  let result = "";
-  for await (const chunk of response) {
-    if (chunk.text) {
-      result += chunk.text;
+    // Collect streamed text
+    let result = "";
+    for await (const chunk of response) {
+      if (chunk.text) {
+        result += chunk.text;
+      }
     }
-  }
 
-  return result; // ✅ return the full response text
+    return result;
+  } catch (error) {
+    console.error("Gemini API Error:", error);
+    throw error;
+  }
 }
 
 export default main;

@@ -41,7 +41,9 @@ function Main() {
                 <img src={assets.bulb_icon} alt="Bulb" />
               </div>
               <div className="card">
-                <p>Get suggestions for interesting conversations along the way</p>
+                <p>
+                  Get suggestions for interesting conversations along the way
+                </p>
                 <img src={assets.message_icon} alt="Message" />
               </div>
               <div className="card">
@@ -59,13 +61,15 @@ function Main() {
 
             <div className="result-data">
               <img src={assets.gemini_icon} alt="" />
-              {loading ? <div className="loader">
-                <hr />
-                <hr />
-                <hr />
+              {loading ? (
+                <div className="loader">
+                  <hr />
+                  <hr />
+                  <hr />
                 </div>
-               : <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
-              }
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+              )}
             </div>
           </div>
         )}
@@ -82,8 +86,9 @@ function Main() {
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {input ?
-              <img onClick={onSent} src={assets.send_icon} alt="" /> : null }
+              {input ? (
+                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              ) : null}
             </div>
           </div>
           <p className="bottom-info">

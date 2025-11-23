@@ -19,12 +19,16 @@ const ContextProvider = (props) => {
   };
 
   const newChat = () => {
-    setLoading(false)
-    setShowResult(false)
-  }
+    setLoading(false);
+    setShowResult(false);
+  };
 
   const onSent = async (customPrompt) => {
-    const promptText = customPrompt || input.trim();
+    // Ensure customPrompt is a string, otherwise use input
+    const promptText =
+      typeof customPrompt === "string" && customPrompt
+        ? customPrompt
+        : input.trim();
     if (!promptText) return;
 
     setResultData("");
@@ -53,7 +57,8 @@ const ContextProvider = (props) => {
       let responseArray = response.split("**");
       let formatted = "";
       for (let i = 0; i < responseArray.length; i++) {
-        formatted += i % 2 === 1 ? `<b>${responseArray[i]}</b>` : responseArray[i];
+        formatted +=
+          i % 2 === 1 ? `<b>${responseArray[i]}</b>` : responseArray[i];
       }
 
       let withBreaks = formatted.replace(/\*/g, "<br/>");
@@ -92,9 +97,7 @@ const ContextProvider = (props) => {
   };
 
   return (
-    <Context.Provider value={contextValue}>
-      {props.children}
-    </Context.Provider>
+    <Context.Provider value={contextValue}>{props.children}</Context.Provider>
   );
 };
 

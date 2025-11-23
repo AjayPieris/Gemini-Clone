@@ -9,11 +9,7 @@ async function main(prompt) {
   const contents = [
     {
       role: "user",
-      parts: [
-        {
-          text: `Please provide a clear, structured, and point-by-point response to the following query. Use bullet points and bold text for emphasis where appropriate:\n\n${prompt}`,
-        },
-      ],
+      parts: [{ text: prompt }],
     },
   ];
 

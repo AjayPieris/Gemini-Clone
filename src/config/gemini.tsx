@@ -5,7 +5,7 @@ const ai = new GoogleGenAI({
 });
 
 async function main(prompt) {
-  const model = "gemini-2.0-flash";
+  const model = "gemini-2.5-flash";
   const contents = [
     {
       role: "user",
